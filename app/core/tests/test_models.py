@@ -24,3 +24,10 @@ class ModelTests(TestCase):
     def test_when_new_user_is_created_email_should_be_validated(self):
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(None, 'password123')
+
+    def test_create_superuser(self):
+        user = get_user_model().objects.create_superuser(
+            'example@example.com', 'SuperUserPass')
+
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
