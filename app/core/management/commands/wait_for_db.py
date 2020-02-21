@@ -12,7 +12,7 @@ class Command(BaseCommand):
         self.stdout.write('Waiting for db')
         db_connection = None
         while not db_connection:
-            try: 
+            try:
                 db_connection = connections['default']
             except OperationalError:
                 self.stdout.write('Db unavailable, waiting 1 sec...')
